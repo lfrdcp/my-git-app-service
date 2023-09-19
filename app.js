@@ -4,10 +4,10 @@ const simpleGit = require('simple-git');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/git-history-dev', (req, res) => {
+app.get('/git-history-dev-test', (req, res) => {
   const git = simpleGit(); // Opcionalmente, puedes especificar la ruta de tu repositorio como argumento.
 
-  git.log((err, log) => {
+  git.log(['--graph', '--oneline', '--decorate', '--all', '--branches'], (err, log) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: 'Error al obtener el historial de Git.' });
@@ -17,7 +17,7 @@ app.get('/git-history-dev', (req, res) => {
   });
 });
 
-app.get('/git-branches-dev', (req, res) => {
+app.get('/git-branches-dev-test', (req, res) => {
     const git = simpleGit(); // Opcionalmente, puedes especificar la ruta de tu repositorio como argumento.
   
     git.branch((err, branches) => {
