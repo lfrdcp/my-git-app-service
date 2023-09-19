@@ -4,7 +4,7 @@ const simpleGit = require('simple-git');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/git-history', (req, res) => {
+app.get('/git-history-dev', (req, res) => {
   const git = simpleGit(); // Opcionalmente, puedes especificar la ruta de tu repositorio como argumento.
 
   git.log((err, log) => {
@@ -17,7 +17,7 @@ app.get('/git-history', (req, res) => {
   });
 });
 
-app.get('/git-branches', (req, res) => {
+app.get('/git-branches-dev', (req, res) => {
     const git = simpleGit(); // Opcionalmente, puedes especificar la ruta de tu repositorio como argumento.
   
     git.branch((err, branches) => {
